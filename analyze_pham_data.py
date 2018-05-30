@@ -1,8 +1,5 @@
 #Python3 script to compute conservation of phams within pre-determined groups of phages and/or
 #proportion of shared phams between every pair of phages
-#Travis Mavrich
-#20160628
-
 
 #General notes:
 #1. Script does not account for genes that straddle genome ends when calculating gene length. So it will not properly handle this edge case.
@@ -31,11 +28,11 @@ except:
         Execute script in any working directory\n\
         Script requires three input files:\n\n\
         First file: genome file (csv-formatted)\n\
-            0 Phage Name (NOT phageID)\n\
-            1 Predetermined group designation (Cluster, Subcluster, par phages, etc.)\n\n\
+            0 Phage Name\n\
+            1 Predetermined group designation (Cluster, Subcluster, etc.)\n\n\
             \n\
         Second file: gene file (csv-formatted)\n\
-            0 Phage Name (NOT phageID)\n\
+            0 Phage Name\n\
             1 GeneID\n\
             2 Gene Start (1-based indexing)\n\
             3 Gene Stop (1-based indexing)\n\
@@ -53,7 +50,7 @@ except:
         1. Pham dictionary (Option 0) = list of all gene descriptions associated with each pham (csv-formatted)\n\
             0 pham\n\
             1 description\n\
-        2. Genome-specific function summary (Option 0 with function analysis)= analysis of how functions contribute to gene totals and gene coding sequence\n\
+        2. Genome-specific function summary (Option 0 with function analysis) = analysis of how functions contribute to gene totals and gene coding sequence\n\
             0 Phage Name\n\
             1 Total gene count\n\
             2...Function-specific gene count\n\
@@ -61,15 +58,15 @@ except:
             4...Function-specific nucleotide gene length mean\n\
             ....Repeat function-specific columns for each function\n\
             Last...Processed gene count\n\
-        3. Group-specific pham tables (Option 0)= Pham presence/absence tables for each group\n\
+        3. Group-specific pham tables (Option 0) = Pham presence/absence tables for each group\n\
             0 Pham\n\
             1+ All phages in group\n\
-        4. Total pham conservation (Option 1)= list of all phams in the dataset and pham conservation at the Group level (csv-formatted)\n\
+        4. Total pham conservation (Option 1) = list of all phams in the dataset and pham conservation at the Group level (csv-formatted)\n\
             0 Pham\n\
             1 Pham descriptions\n\
             2+...Each unique element/name in the Group designation\n\
         5. Genome-specific pham conservation (Option 1) = unique file for each phage, reflecting levels of pham conservation at the Group level (csv-formatted)\n\
-            0 Phage Name (NOT phageID)\n\
+            0 Phage Name\n\
             1 GeneID\n\
             2 Gene Start\n\
             3 Gene Stop\n\
@@ -356,7 +353,7 @@ csvfile.close()
 #Create phage-gene dictionary
 #Key = phage name
 #Value = list of gene data
-#0 = phage name
+#0 = Phage name
 #1 = GeneID
 #2 = Gene start
 #3 = Gene stop
@@ -1036,8 +1033,6 @@ if (analysis_type == 3) or (analysis_type == 4):
             for pham in group1_shared_pham_set:
                 group1_shared_pham_distribution.append(len(pham_group_dict[pham]))
 
-            #REVIEW Need to account for 0 or 1 members to compute mean and median
-            #as has been corrected for it in section above
             if len(group1_shared_pham_distribution) > 0:
                 group1_shared_pham_distribution_mean = statistics.mean(group1_shared_pham_distribution)
                 group1_shared_pham_distribution_median = statistics.median(group1_shared_pham_distribution)

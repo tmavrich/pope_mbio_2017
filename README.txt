@@ -25,7 +25,9 @@ The indicated scripts can be found in the pope_mbio_2017 repository.
 3. Compute maximum gene content dissimilarity gap for all phages in 
     Actinobacteriophage_789 and Cyanobacteriophage_209 databases:
     
-    Script: analyze_mash_network.py
+    Script: analyze_mash_network.py (note: this scripts receives gene content and 
+    nucleotide distance data. If only using for gene content dissimilarity analysis, 
+    nucleotide distance data can be set to 0.)
     
     Input files:
         a. actino789 and cyano_209 phage names (generated in Excel from SQL query)

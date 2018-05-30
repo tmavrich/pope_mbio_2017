@@ -1,6 +1,4 @@
 #Python3 script to perform misc analyses on mash networks
-#Travis Mavrich
-#20161206
 
 
 import csv, os, sys, time
@@ -24,8 +22,8 @@ except:
             4+ = ...\n\
             \n\
         Second argument: input file of all phage names used in the Mash analysis (csv-formatted)\n\
-            0 Phage Name (NOT phageID)\n\
-            1 Predetermined group designation (Cluster, Subcluster, par phages, etc.)\n\n\
+            0 Phage Name\n\
+            1 Predetermined group designation (Cluster, Subcluster, etc.)\n\n\
             2+ = ...\n\
         \n\n\n\
         The script outputs three file(s):\n\
@@ -453,12 +451,7 @@ gcd_gap_output_list = []
 
 for phage in phage_data_dict:
 
-    #print(phage)
-    #input()
     data_list = phage_data_dict[phage]
-
-    #print(data_list)
-    #input()
 
 
     gcd_data_list = [0] #Add a zero fake data point, representing the phage against itself
@@ -467,14 +460,11 @@ for phage in phage_data_dict:
 
     #Create list of only gene content dissimilarity data
     for element in data_list:
-        #print(element)
-        #input()
+
         gcd_data_list.append(element[1])
 
-    #print(gcd_data_list)
     gcd_data_list.sort()
-    #print(gcd_data_list)
-    #input()
+
     index = 0
     while index < (len(gcd_data_list) - 1):
         gap = gcd_data_list[index+1] - gcd_data_list[index]
