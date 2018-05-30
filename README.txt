@@ -2,6 +2,15 @@ Below is a brief description of the bioinformatic pipeline used for
 Pope et al. mBio 2017, Figure 8.
 The indicated scripts can be found in the pope_mbio_2017 repository.
 
+Note: processing of the data using the scripts is not completely linear. Output from one script
+(such as analyze_pham_data.py) gets imported into R where analyze_all_data.R processes the
+data and outputs a new file for another script (such as analyze_mash_network.py), and
+the new output gets imported back into R and processed by other steps in the
+analyze_all_data.R code. Also, some input files are prepared manually using Excel with
+data retrieved from the phage SQL database.
+
+
+
 1. Compute gene content dissimilarity for Actinobacteriophage_789 database:
 
     Script: analyze_pham_data.py
